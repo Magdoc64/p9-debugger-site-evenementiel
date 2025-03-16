@@ -34,6 +34,7 @@ export const DataProvider = ({ children }) => {
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
+  
       value={{
         data,
         error,
