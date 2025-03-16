@@ -27,16 +27,17 @@ const Slider = () => {
   };
   useEffect(() => {
     nextCard();
-  });
+    byDateDesc?.map((event, idx) => (
+      console.log(idx)
+))});
 
   //Modification with transformation of inputs into bullets
   //Fixed retrieving the month from the event date
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={event.title}>
           <div
-            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -52,10 +53,10 @@ const Slider = () => {
           </div>
           <div className="SlideCard__paginationContainer">
             {byDateDesc.map((_, radioIdx) => (
-              <div className={`SlideCard__pagination_radio-button ${index === radioIdx ? "SlideCard__pagination_radio-button_active" : ""}`}>  
+              <div key={radioIdx} className={`SlideCard__pagination_radio-button ${index === radioIdx ? "SlideCard__pagination_radio-button_active" : ""}`}>  
               </div>))}
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
