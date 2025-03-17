@@ -5,28 +5,24 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const Select = ({
-  selection,
-  onChange,
-  name,
-  titleEmpty,
-  label,
-  type = "normal",
-}) => {
+const Select = ({selection,onChange,name,titleEmpty,label,type = "normal"}) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+
+  //Added a condition to close the drop-down window when selecting "all"
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    !newValue? setCollapsed(true) : setCollapsed(newValue);
   };
+  
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
       <div className="Select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
-            {value || (!titleEmpty && "Toutes")}
+            {value || (!value && "Toutes")}
           </li>
           {!collapsed && (
             <>

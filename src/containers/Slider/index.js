@@ -27,12 +27,11 @@ const Slider = () => {
   };
   useEffect(() => {
     nextCard();
-    byDateDesc?.map((event, idx) => (
-      console.log(idx)
-))});
+  });
 
   //Modification with transformation of inputs into bullets
   //Fixed retrieving the month from the event date
+  //Moving the key to the global div following the first mapping
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
