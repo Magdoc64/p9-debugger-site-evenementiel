@@ -13,8 +13,14 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  /*change last date retrieval - 
+  retrieving the last event in the list without taking the date into account -
+  multiple events with the same date and time*/
+  const {data} = useData()
   
+  const events = data && data.events ? data.events : [];
+  const lastDate = events[events.length-1];
+
   return <>
     <header>
       <Menu />
@@ -118,9 +124,9 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+          imageSrc={lastDate?.cover}
+          title={lastDate?.title}
+          date={new Date(lastDate?.date)}
           small
           label="boom"
         />
