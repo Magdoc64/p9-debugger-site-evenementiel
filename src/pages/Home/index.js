@@ -121,8 +121,8 @@ const Page = () => {
       </div>
     </main>
     <footer className="row">
-      <div className="col presta">
-        <h3>Notre derniére prestation</h3>
+      <div className="col presta" data-testid="prestation-testid">
+        <h3>Notre dernière prestation</h3>
         <EventCard
           imageSrc={lastDate?.cover}
           title={lastDate?.title}
@@ -131,7 +131,7 @@ const Page = () => {
           label="boom"
         />
       </div>
-      <div className="col contact">
+      <div className="col contact" data-testid="contact-testid">
         <h3>Contactez-nous</h3>
         <address>45 avenue de la République, 75000 Paris</address>
         <div>01 23 45 67 89</div>
@@ -151,7 +151,7 @@ const Page = () => {
           </a>
         </div>
       </div>
-      <div className="col description">
+      <div className="col description" data-testid="description-testid">
         <Logo size="large" />
         <p>
           Une agence événementielle propose des prestations de service

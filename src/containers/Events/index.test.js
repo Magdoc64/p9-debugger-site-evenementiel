@@ -37,6 +37,8 @@ const data = {
   ],
 };
 
+/*complement of the test with addition of verification that there are all the titles of the events
+with with addition of verification on all the elements of the modal*/
 describe("When Events is created", () => {
   it("a list of event card is displayed", async () => {
     api.loadData = jest.fn().mockReturnValue(data);
@@ -46,6 +48,8 @@ describe("When Events is created", () => {
       </DataProvider>
     );
     await screen.findByText("avril");
+    await screen.findByText("Conférence #productCON");
+    await screen.findByText("Forum #productCON");
   });
   describe("and an error occured", () => {
     it("an error message is displayed", async () => {
@@ -105,6 +109,8 @@ describe("When Events is created", () => {
       );
 
       await screen.findByText("24-25-26 Février");
+      await screen.findByText("Présentation des outils analytics aux professionnels du secteur");
+      await screen.findByText("1300");
       await screen.findByText("1 site web dédié");
     });
   });

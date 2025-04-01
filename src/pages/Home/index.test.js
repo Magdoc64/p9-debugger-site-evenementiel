@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
 
+
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
     render(<Home />);
@@ -27,16 +28,33 @@ describe("When Form is created", () => {
 
 });
 
+//added tests of the differents elements of the home page
+const mockEventList = jest.fn();
+jest.mock("../../containers/Events", () => (props) => {
+  mockEventList(props);
+  return <mock-event role="event-list"/>
+})
+
+const mockPeopleList = jest.fn();
+jest.mock("../../components/PeopleCard", () => (props) =>{
+  mockPeopleList(props);
+  return <mock-people role="people-list"/>
+})
 
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
-    // to implement
+    render (<Home />);
+    expect(mockEventList).toHaveBeenCalledTimes(1);
   })
   it("a list a people is displayed", () => {
-    // to implement
+    render (<Home />);
+    expect(mockPeopleList).toHaveBeenCalledTimes(6);
   })
   it("a footer is displayed", () => {
-    // to implement
+    render (<Home />);
+    screen.getByTestId("prestation-testid");
+    screen.getByTestId("contact-testid");
+    screen.getByTestId("description-testid");
   })
   it("an event card, with the last event, is displayed", () => {
     // to implement
